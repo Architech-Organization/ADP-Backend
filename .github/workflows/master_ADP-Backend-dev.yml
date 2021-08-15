@@ -3,7 +3,6 @@
 
 name: Build and deploy JAR app to Azure Web App - ADP-Backend-dev
 
-name: Build
 on: [push, pull_request]
 
 jobs:
