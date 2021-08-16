@@ -47,10 +47,13 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-    - name: Download artifact from build job
-      uses: actions/download-artifact@v2
+    - name: Cache Gradle packages
+      uses: actions/cache@v1
       with:
         name: java-app
+        path: ~/.gradle/caches
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+        restore-keys: ${{ runner.os }}-gradle
 
     - name: Deploy to Azure Web App
       id: deploy-to-webapp
