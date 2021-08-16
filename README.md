@@ -18,6 +18,28 @@
 
  # Getting started
 
+## Configuration
+
+The application can be configured via environment variables. Most are spring / spring boot environment variables.
+The following would be the most interesting:
+
+#### Database
+
+By default, the application will use a volatile in-memory H2 database unless the following environment variables 
+are overridden
+
+* `spring.datasource.url`: The JDBC connectivity URL. Eg, A value of `jdbc:mariadb://localhost:3306/conduit` would
+  be used to connect to a schema called `conduit` on a MariaDB instance running on `localhost:3306`
+* `spring.datasource.driver-class-name`: The jdbc driver class name. Options are:
+  * `org.mariadb.jdbc.Driver`
+* `spring.datasource.username`: The username to connect to the database with.
+* `spring.datasource.password`: The password to connect to the database with.
+* `spring.jpa.hibernate.ddl-auto`: Set this to `update` when not using H2. Read more 
+  [here](https://stackoverflow.com/questions/42135114/how-does-spring-jpa-hibernate-ddl-auto-property-exactly-work-in-spring) 
+  *Note:* `update` is the cheap and easy solution for creating a schema which works for a simple unchanging application.
+  In the future it will be best to leverage a migration tool such as [Liquibase](https://www.liquibase.com/) 
+  or [Flyway](https://flywaydb.org/).
+
  ## Build from scratch
  ``` shell
  $ ./gradlew build bootRun

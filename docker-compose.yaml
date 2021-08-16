@@ -1,0 +1,15 @@
+services:
+  mariadb:
+    image: mariadb
+    command: [ '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci', '--lower_case_table_names=1' ]
+    environment:
+      MYSQL_ROOT_PASSWORD: myrootpassword
+      MYSQL_DATABASE: conduit
+      MYSQL_USER: conduituser
+      MYSQL_PASSWORD: conduitpassword
+    expose:
+      - "3306"
+    ports:
+      - "${MARIADB_LOCALHOST_PORT:-3306}:3306"
+    volumes:
+      - ./.volumes/mariadb:/var/lib/mysql:delegated
