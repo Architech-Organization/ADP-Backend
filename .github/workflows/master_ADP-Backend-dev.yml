@@ -50,7 +50,6 @@ jobs:
     - name: Cache Gradle packages
       uses: actions/cache@v1
       with:
-        name: java-app
         path: ~/.gradle/caches
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
         restore-keys: ${{ runner.os }}-gradle
@@ -62,3 +61,4 @@ jobs:
         app-name: 'ADP-Backend-dev'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_fe914f0ff88d4d039f087ddb78b946c8 }}
+        Package: /*.jar
