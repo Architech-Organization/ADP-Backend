@@ -62,5 +62,4 @@ jobs:
         app-name: 'ADP-Backend-dev'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_fe914f0ff88d4d039f087ddb78b946c8 }}
-        package: '*.jar'
-      uses: PublishBuildArtifacts@1
+        package: '*.gradle'
