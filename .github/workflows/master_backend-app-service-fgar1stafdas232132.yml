@@ -50,4 +50,4 @@ jobs:
         app-name: 'backend-app-service-fgar1stafdas232132'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_f3c6780399114ef6bbd5e26cde79f120 }}
-        package: '*.jar'
+        package: 'build/libs/*.jar'
