@@ -58,6 +58,6 @@ jobs:
       id: deploy-to-webapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'ADP-Backend-dev'
+        app-name: 'sample-backend-springboot-java-app'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_fe914f0ff88d4d039f087ddb78b946c8 }}
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
