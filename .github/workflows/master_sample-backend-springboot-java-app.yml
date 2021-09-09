@@ -50,4 +50,4 @@ jobs:
         app-name: 'sample-backend-springboot-java-app'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_8dfe9e45ef8e4c49ae9d547b7d4c6ef3 }}
-        package: '*.jar'
+#         package: '*.jar'
