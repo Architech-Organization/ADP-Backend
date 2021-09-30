@@ -1,3 +1,5 @@
+# By default this starts only mariadb. This is convient for local development.
+# When enabling the `app` profile via `docker-compose --profile app up` then an image of the application will start as well.
 services:
   mariadb:
     image: mariadb
@@ -5,11 +7,26 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: myrootpassword
       MYSQL_DATABASE: conduit
-      MYSQL_USER: conduituser
-      MYSQL_PASSWORD: conduitpassword
+      MYSQL_USER: &user conduituser
+      MYSQL_PASSWORD: &password conduitpassword
     expose:
       - "3306"
     ports:
       - "${MARIADB_LOCALHOST_PORT:-3306}:3306"
     volumes:
       - ./.volumes/mariadb:/var/lib/mysql:delegated
+  app:
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    profiles:
+      - app
+    depends_on:
+      - mariadb
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mariadb://mariadb:3306/conduit
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.mariadb.jdbc.Driver
+      SPRING_DATASOURCE_USERNAME: *user
+      SPRING_DATASOURCE_PASSWORD: *password
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update

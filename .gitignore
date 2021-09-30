@@ -6,6 +6,7 @@
 !.github
 !.gitignore
 !.editorconfig
+!.dockerignore
 
 HELP.md
 .gradle
