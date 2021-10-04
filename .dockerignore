@@ -3,7 +3,8 @@
 .*/
 
 # Build or output folders
-build/
+./build/
+!build/libs
 
 # Non-build related files
 gradlew
